@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    (function(){
+     function calcularMedia(){
+         let total = 0
+         let qtd = arguments.length;
+         for( let i =0; 1 < qtd; i++){
+            if(typeof arguments[i] !== "number"){
+                throw error
+            }
+            total += arguments[i]
+         }
+         return media / qtd
+     }
+      let media = calcularMedia(2, 4)
+
+    })()
+</script>
+</html>

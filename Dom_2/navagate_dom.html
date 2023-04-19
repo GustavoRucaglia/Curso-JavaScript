@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> teste DOM</h1>
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#"> Link</a>.</p>
+        <p>teste 2</p>
+
+        <h2> Lista</h2>
+        <ul >
+            <li>Item 1</li>
+            <li>Item 2
+                <ul>
+                    <li>Item 2.a</li>
+                    <li>Item 2.b</li>
+                    <li>Item 2.c</li>
+                </ul>
+            </li>
+            <li> item <a href="#"> Link</a></li>
+        </ul>
+    </div>
+    <script>
+      console.log(document.body)
+      console.log(document.body.parentElement)
+      console.log(document.body.parentNode)
+
+      const html = document.body.parentElement
+
+      console.log(html.parentElement)
+      console.log(html.parentNode)
+
+      const getH2 = document.querySelector("h2")
+     const Nexth2 = getH2.nextElementSibling//mostra o proximo elemento
+     console.log(Nexth2)
+     Nexth2.style.background = "#ff00ff"
+      console.log(  getH2.nextSibling)
+      console.log(  getH2.previousElementSibling)//mostra o elemento anterior
+    //   childNodes
+    //   child firstChild
+    //   firstElementChild
+    //   lastChild
+    //   hasChilNodes
+
+    const link = document.querySelector("a")
+    const list = document.querySelector("ul ul")
+
+    console.log(link.lastChild)
+    </script>
+</body>
+</html>

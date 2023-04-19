@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .container2{
+            background-color: aqua;
+            padding: 15px;
+        }
+        .container2 p{
+            border: 1px solid red;
+            padding: 10px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!--beforebegin -->
+    <h1> teste DOM</h1>
+      <!--afterbegin -->
+    <div class="container2">
+        <p> oi 1 </p>
+        <p> oi 2</p>
+        <p> oi 3</p>
+        <p> oi 4</p>
+         <!--beforeend -->
+    </div>
+     <!--afterend- -->
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#"> Link</a>.</p>
+        <p>teste 2</p>
+
+        <h2> Lista</h2>
+        <ul >
+            <li>Item 1</li>
+            <li>Item 2
+                <ul>
+                    <li>Item 2.a</li>
+                    <li>Item 2.b</li>
+                    <li>Item 2.c</li>
+                </ul>
+            </li>
+            <li> item <a href="#"> Link</a></li>
+        </ul>
+    </div>
+    <script>
+      const title = document.createElement("h1")
+      const atributo = document.createAttribute("id")
+      atributo.value = "title1"
+      title.setAttributeNode(atributo)
+
+
+      title.setAttribute("text", "inserido dinamicamente")
+      title.setAttribute("style", "color: red")
+      const text = document.createTextNode("criar nós no DOM")
+      title.appendChild(text)
+
+      title.textContent= "texo inserido com text content"
+
+      console.log(title)
+     
+      //document.querySelector(".container").appendChild(title)
+
+      //document.querySelector(".container").append(title)
+
+      //document.querySelector(".container").prepend(title)
+
+      const title2 = document.createElement("h1")
+      title2.textContent = "titulo 2"
+
+        let list = document.querySelector("ul")
+
+      document.querySelector(".container").insertBefore(title2, list)
+      document.querySelector(".container").insertBefore(title,  document.querySelector(".container").firstChild)
+
+      let sublevel = document.querySelector("ul ul")
+
+      sublevel = sublevel.cloneNode(true)
+
+      const h2 = document.querySelector("h2")
+
+      document.querySelector(".container").insertBefore(sublevel, h2.nextElementSibling)
+
+     const segundoparagrafo =  document.querySelector(".container").firstElementChild.nextElementSibling.nextElementSibling
+
+     segundoparagrafo.after("texto inserido com after")
+
+     const span = document.createElement("span")
+     span.textContent = "span dinamico"
+     segundoparagrafo.before("texto inserido com before", span)
+
+     const  container2 = document.querySelector(".container2")
+        //beforebegin, afterbegin, beforeend, afterend
+     container2.insertAdjacentHTML("beforebegin", "<b> texto inserido beforebegin </b> <br>")
+     container2.insertAdjacentHTML("afterbegin", "<b> texto inserido afterbegin </b> <br>")
+     container2.insertAdjacentHTML("beforeend", "<b> texto inserido beforeend </b> <br/>")
+     container2.insertAdjacentHTML("afterend", "<b> texto inseridoafterend </b> <br>")
+
+     container2.insertAdjacentText("afterend", "text")
+
+     const em = document.createElement("em")
+     em.textContent = "texto com enfase"
+     container2.insertAdjacentElement("beforeend", em )
+    
+      list.remove();
+      //parentNode.removeChild(list)
+      //list.parentElement.removeChild(list)
+
+      let parent = document.body
+      const novo = document.querySelector(".container").querySelector("h1")
+     
+      const velho = document.querySelector("h1")
+      parent.replaceChild(novo, velho)
+
+    </script>
+</body>
+</html>

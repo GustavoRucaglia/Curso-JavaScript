@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <style type="text/css">
+        .underlined{
+          border-bottom: 3px solid currentColor;
+        }
+      </style>
+    </head>
+
+    <body>
+
+       <div class="container">
+
+        <div class="hero center card-panel materialize-red darken-4 white-text z-depth-3">
+          <h1 class="materialize-red-text text-lighten-3"> Curso Javascript Completo</h1>
+          
+        </div>
+        <h2 class="materialize-red-text text-lighten-2 underlined">Dados de Alunos</h2>
+
+        <table class="striped">
+        <thead>
+          <tr>
+              <th>Nome</th>
+              <th aluno-nota="n1">Nota 1</th>
+              <th aluno-nota="n2">Nota 2</th>
+              <th aluno-nota="n3">Nota 3</th>
+              <th aluno-nota="n4">Nota 4</th>
+              <th aluno-nota="media">Média</th>
+              
+          </tr>
+        </thead>
+        <tbody>
+
+    
+        </tbody>
+      </table>
+      </div>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="calc.js"></script>
+      <script>
+
+      
+        (function(){
+          const alunos = [
+           { nome: "daniel", nota1: 10, nota2: 3, nota3: 7.5, nota4: 3},
+           { nome: "Maria", nota1: 10, nota2: 9, nota3: 3, nota4: 9.5},
+           { nome: "João", nota1: 10, nota2: 4.5, nota3: 1, nota4: 3.5},
+           { nome: "Joana", nota1: 1, nota2: 3, nota3: 9, nota4: 3},
+           { nome: "José", nota1: 10, nota2: 4.5, nota3: 7, nota4: 3},
+           { nome: "Arnaldo", nota1: 10, nota2: 4.5, nota3: 7 ,nota4: 3},
+           { nome: "Luana", nota1: 3, nota2: 7, nota3: 9, nota4: 3},
+           { nome: "Beatriz", nota1: 10, nota2: 4, nota3: 7, nota4: 9},
+           { nome: "Sergio", nota1: 4.5, nota2: 9.5, nota3: 10, nota4: 2}
+         ]
+          
+         alunos.forEach(aluno => {
+            aluno.media = avarege(aluno.nota1, aluno.nota2,aluno.nota3, aluno.nota4 )
+         })
+
+         const Row = alunos.map( aluno =>`
+            <tr>
+              <td>${aluno.nome}</td>
+              <td>${aluno.nota1}</td>
+              <td>${aluno.nota2}</td>
+              <td>${aluno.nota3}</td>
+              <td>${aluno.nota4}</td>
+              <td>${aluno.media}</td>
+            </tr>
+         `).join("")
+
+         document.querySelector("tbody").innerHTML = Row
+        })()
+      </script>
+
+    </body>
+  </html>
+

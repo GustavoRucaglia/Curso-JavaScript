@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+ <body>
+    <h1 id="title">gá mundo</h1>
+    <div id="teste">
+
+    </div>
+    <span class="txt"> oiiig o gustavo é perfeitooo</span><br>
+    <span class="txt"> g o gustavo é perfeitooo</span>
+    <h1 id="titulo1"> ola mundo2</h1>
+    <span class="txt1"> oiii o gustavo é perfeitooo</span><br>
+    <span class="txt1"> oiii o gustavo é perfeitooo</span>
+    <br> 
+    <script>
+    //adicionandop0 elemento HTMl com innner
+    document.querySelector("#title").innerHTML += "<br>" + "<b>" + "editado pelo gustavo" + "</b>"
+    //class name recebe HTML colletion
+    document.getElementsByClassName("txt")[1].textContent = "editado pelo gustavo"
+    //query select recebe node list
+    document.querySelectorAll(".txt1")[0]
+    //removendo elemento
+    document.querySelector("#titulo1").remove()
+    //adicionar propriedades
+    const ana = document.createElement("div")
+    ana.className = "anaLegal"
+    ana.innerHTML = "<p> A Ana é chata </p>"
+    insert(ana)
+    </script>
+ </body>
+</html>

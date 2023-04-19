@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/formulario.css">
+
+</head>
+<body>
+    
+    <div class="formCadastro__app">
+
+        <div class="formCadastro__container">
+            <h1 class="heading">Cadastre uma tarefa</h1>
+
+            <form action="#" class="formCadastro" id="shopping-add">
+                <label for="txtTitulo" >
+                    Título
+                </label>
+                <input id="txtTitulo" type="text" name ="txtTitulo">
+
+                <label for="txtDescricao">
+                    Descrição da tarefa
+                </label>
+                <textarea id="txtDescricao" rows="5" maxlength="355"></textarea>
+                <div id="contador" style="display: none;"> <span></span> caracteres</div>
+
+                <label>
+                    <input type="checkbox" name="" id="chkAceito">
+                    Comprometo-me a entregar esta tarefa o quanto antes
+                </label>
+
+                <input id="btn" type="submit" value="Adicionar" disabled>
+
+            </form>
+        </div>
+
+        <div id="feedbackMessage">
+            <p>Escreva um titulo</p>
+            <button class="btnFechar">
+                <span class="fa fa-close"></span>
+            </button>
+            
+        </div>
+
+        
+    
+    </div>
+
+    <script>
+        const btn = document.querySelector("#btn")
+        const inputTitulo = document.getElementById("txtTitulo")
+        const form = document.querySelector(".formCadastro")
+        const checkbox = document.querySelector("#chkAceito")
+        const txtDescricao = document.querySelector("#txtDescricao")
+        const containerContador = document.getElementById("contador")
+        const contador = containerContador.getElementsByTagName("span")[0]
+        const max = txtDescricao.maxLength
+        console.log(checkbox.checked)
+        const menssagemFeedback = document.querySelector("#feedbackMessage")
+        const fecharFeedback = document.querySelector(".btnFechar")
+        function desable(){
+        if(checkbox.checked){
+           btn.removeAttribute("disabled")
+            }
+            else{
+            btn.setAttribute("disabled", true)
+            }
+         }
+
+         function contadorContent(){
+            contador.textContent = max
+        }
+
+        function checkLength(){
+            let numeroLetrasdigitadas = this.value.length
+            let caracteresRestantes = parseInt(max) - parseInt(numeroLetrasdigitadas)
+            contador.textContent = caracteresRestantes
+        }
+         function validaDados(e){
+            if(inputTitulo.value == ""){
+                menssagemFeedback.style.left = "1rem"
+                menssagemFeedback.style.top = "8rem"
+                menssagemFeedback.classList.add("show")
+                e.preventDefault()
+                console.log(fecharFeedback)
+                fecharFeedback.focus()
+            }else{
+                return true
+            }
+            }
+            function fecharFeed(){
+                menssagemFeedback.classList.remove("show")
+                menssagemFeedback.style.left = "1rem"
+                menssagemFeedback.style.top = "1rem"
+
+            }
+            function pressKeyboardBtn(e){
+                console.log(e.keyCode)
+
+                if(e.keyCode === 27){
+                    fecharFeed()
+                }
+            }
+        checkbox.addEventListener("change", desable)
+        form.addEventListener("submit", validaDados)
+        form.addEventListener("input", fecharFeed)
+        fecharFeedback.addEventListener("click", fecharFeed)
+        fecharFeedback.addEventListener("keyup", pressKeyboardBtn)
+        txtDescricao.addEventListener("input", checkLength, contadorContent)
+
+        //remover atributo
+        containerContador.removeAttribute("style")
+        //metodos
+        txtDescricao.addEventListener("keyup", function(){
+            console.log("keyup")
+        })
+        //primeiro a ser acionado, mas aciona com qualquer tecla
+        txtDescricao.addEventListener("keydown", function(){
+            console.log("keydown")
+        })
+
+        txtDescricao.addEventListener("keypress", function(){
+            console.log("keypress")
+        })
+        //ativa quando mudado o input
+        txtDescricao.addEventListener("change", function(){
+            console.log("change")
+        })
+       // removeEventListener("click", teste)
+    </script>
+
+</body>
+</html>

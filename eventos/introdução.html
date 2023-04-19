@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <button id="btn1"> botão 1</button>
+    <button id="btn2"> botão 2</button>
+    <button id="btn3"> botão 3</button>
+    <div>
+        <hr>
+        <h1> delegação de evento</h1>
+        <div class="container2">
+            <button id="btn4"> botão 1</button>
+            <button id="btn5"> botão 2</button>
+            <button id="btn6"> botão 3</button>
+        </div>
+    </div>
+    <script>
+        const btn1 = document.getElementById("btn1")
+        const btn2 = document.getElementById("btn2")
+        const btn3 = document.getElementById("btn3")
+        //eventos level-0
+        function clicou(){
+            window.alert("clicou")
+        }
+
+        btn1.onclick = function(){
+            window.alert("clicou via anonima")
+        }
+        btn1.onclick = clicou
+
+        //eventos level-2 ("evento", função, methodo)
+        btn2.addEventListener("click", clicou)
+
+        btn2.addEventListener("click", function(){
+            window.alert("clicou via anonima")
+        })
+
+        btn3.addEventListener("click", function(event){
+            console.log(event)
+            event.stopPropagation()
+            window.alert("oi")
+        }, false)
+
+        document.addEventListener("click", function(){
+            window.alert("clicou documento")
+        }, false)
+
+        const container2 = document.querySelector(".container2")
+    const btns = document.querySelectorAll(".container2 button")
+    const btnsArray = Array.from(btns)
+    console.log(btns)
+    console.log(btnsArray)
+    /*
+     btnsArray.forEach( btn => {
+     btn.addEventListener("click", function(event) {
+    console.log("clicou btns")
+        event.stopPropagation()
+  },false)
+})*/
+
+    container2.addEventListener("click", function(e){
+        e.stopPropagation()
+        if(e.target.nodeName === "BUTTON"){
+            console.log(e.target)
+            console.log(e.currentTarget)
+            console.log(this)
+        }
+    })
+    </script>
+</body>
+</html>
